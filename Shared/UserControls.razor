@@ -1,0 +1,38 @@
+﻿@inject AuthState AuthState
+
+@if (!_authenticated)
+{
+    <div class="user-controls">
+        <a href="#" @onclick="@(() => ToggleAuthDialog(true))">Create User</a>
+        <a href="#" @onclick="@(() => ToggleAuthDialog())">Log In</a>
+    </div>
+}
+else
+{
+    <div class="user-controls">
+        hello
+    </div>
+}
+
+
+<AuthenticationForm ShowAuthForm="AuthState.ShowAuthDialog" NewUser="_newUser" Trigger="_triggerCount"/>
+
+
+@code {
+
+    private bool _authenticated = false;
+    private bool _newUser;
+    private int _triggerCount = 1;
+
+    void ToggleAuthDialog(bool newUser = false)
+    {
+        _triggerCount++;
+
+        _newUser = newUser;
+        AuthState.ToggleAuthDialog(true);
+
+    }
+
+
+}
+

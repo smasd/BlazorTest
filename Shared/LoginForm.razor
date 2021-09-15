@@ -1,0 +1,18 @@
+﻿
+<div class="form-field">
+    <label>Username: </label>
+    <div>
+        <InputText @bind-Value="Login.Username"></InputText>
+    </div>
+</div>
+
+<div class="form-field">
+    <label>Password: </label>
+    <div>
+        <InputText @bind-Value="Login.Password"></InputText>
+    </div>
+</div>
+
+@code {
+    [Parameter] public Login Login { get; set; }
+}

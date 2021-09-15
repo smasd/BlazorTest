@@ -1,0 +1,16 @@
+.form-field[b-b7nrg0bgbc] {
+    display: flex;
+    margin: 0.5rem;
+}
+
+.form-field > label[b-b7nrg0bgbc] {
+    width: 8rem;
+}
+
+.form-field > div[b-b7nrg0bgbc] {
+    flex-grow: 1;
+}
+
+.form-field input[b-b7nrg0bgbc] {
+    width: 100%;
+}

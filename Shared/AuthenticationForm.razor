@@ -1,0 +1,51 @@
+﻿@inject AuthState AuthState
+
+@if (AuthState.ShowAuthDialog)
+{
+    <div class="dialog-container">
+        <div class="dialog">
+            <div class="dialog-title">
+                <a href="#" @onclick="@(() => SetNewUser(true))">Create User</a>
+                <a href="#" @onclick="@(() => SetNewUser(false))">Log In</a>
+            </div>
+            <div class="dialog-body">
+                @if (NewUser)
+                {
+                    <EditForm Model="AuthState.NewUser">
+                        <NewUserForm NewUser="AuthState.NewUser"/>
+                    </EditForm>
+                }
+                else
+                {
+                    <EditForm Model="AuthState.Login">
+                        <LoginForm Login="AuthState.Login"/>
+                    </EditForm>
+                }
+                <button @onclick="CloseDialog">Close</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public bool ShowAuthForm { set; get; }
+
+    [Parameter]
+    public bool NewUser { set; get; }
+    
+    [Parameter]
+    public int Trigger { set; get; }
+
+
+    void SetNewUser(bool isNewUser)
+    {
+        NewUser = isNewUser;
+    }
+
+    void CloseDialog()
+    {
+        AuthState.ShowAuthDialog = false;
+    }
+
+}
